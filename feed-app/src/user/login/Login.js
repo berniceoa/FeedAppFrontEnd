@@ -15,12 +15,13 @@ const Login = ({ currentUser, isAuthenticated }) => {
   }, []);
 
   return (
+    
     <React.Fragment>
       <div className="login-container">
         <Row type="flex" justify="center">
           <Col pan={24}>
             <div className="logo-container">
-              <span>Feed App - Login</span>
+              <span id="feed-login">FEED APP</span>
             </div>
           </Col>
         </Row>
@@ -34,6 +35,7 @@ const Login = ({ currentUser, isAuthenticated }) => {
         Don't have an account? <Link to="/signup">Signup</Link>
       </div>
     </React.Fragment>
+   
   );
 };
 

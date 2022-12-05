@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signup.css";
-import toast from "react-hot-toast";
 import { Form, Input, Button, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -12,8 +11,6 @@ import {
   PASSWORD_MIN_LENGTH,
   PASSWORD_MAX_LENGTH,
 } from "../../common/constants";
-
-import { signUpApi } from "../../util/ApiUtil";
 
 const FormItem = Form.Item;
 
@@ -123,7 +120,7 @@ const validatePassword = (password) => {
   }
 };
 
-const Signup = () => {
+const Signup = ({ currentUser, isAuthenticated }) => {
   let navigate = useNavigate();
 
   const [name, setName] = useState({ value: "" });
@@ -131,21 +128,21 @@ const Signup = () => {
   const [email, setEmail] = useState({ value: "" });
   const [password, setPassword] = useState({ value: "" });
 
-  const onFinish = async () => {
-    const apiResponse = await signUpApi(
-      username.value,
-      name.value,
-      email.value,
-      "1",
-      password.value
-    );
-
-    if (apiResponse) {
-      navigate("/login");
-      toast("Signup successful. Please login to continue.");
-    } else {
-      toast("Invalid sign up request. Username or email already exists.");
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
     }
+  }, []);
+
+  const onFinish = (values) => {
+    const signupRequest = {
+      name: name.value,
+      email: email.value,
+      username: username.value,
+      password: password.value,
+    };
+    console.log(signupRequest);
+    // Code to link with signup api
   };
 
   const handleInputChange = (event, validationFun) => {
@@ -191,7 +188,7 @@ const Signup = () => {
         <Row type="flex" justify="center">
           <Col pan={24}>
             <div className="logo-container">
-              <span>Feed App - Signup</span>
+              <span id="feedapp-heading">FEED APP</span>
             </div>
           </Col>
         </Row>
@@ -205,6 +202,7 @@ const Signup = () => {
                 name="name"
               >
                 <Input
+                  className="input-box"
                   size="large"
                   name="name"
                   placeholder="Name"
@@ -219,6 +217,7 @@ const Signup = () => {
                 name="email"
               >
                 <Input
+                  className="input-box"
                   size="large"
                   name="email"
                   placeholder="Email"
@@ -233,6 +232,7 @@ const Signup = () => {
                 name="username"
               >
                 <Input
+                  className="input-box"
                   size="large"
                   name="username"
                   placeholder="Username"
@@ -249,6 +249,7 @@ const Signup = () => {
                 name="password"
               >
                 <Input
+                  className="input-box"
                   size="large"
                   name="password"
                   type="password"
@@ -264,7 +265,8 @@ const Signup = () => {
                   type="primary"
                   htmlType="submit"
                   size="large"
-                  className="signup-form-button bg-indigo-600"
+                  className="signup-form-button"
+                  id="button-id"
                   disabled={isFormInvalid()}
                 >
                   Signup

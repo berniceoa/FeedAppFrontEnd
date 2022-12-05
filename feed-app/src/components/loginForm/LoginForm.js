@@ -1,31 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Form, Input, Button } from "antd";
-import toast from "react-hot-toast";
-
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./loginform.css";
-import { loginApi } from "../../util/ApiUtil";
-import { AppContext } from "../../context/applicationContext";
 
 const FormItem = Form.Item;
 
 const LoginForm = () => {
-  const appContext = useContext(AppContext);
-
-  const onFinish = async (values) => {
-    const apiResponse = await loginApi(values.username, values.password);
-
-    if (apiResponse) {
-      const tokenData = {
-        token: apiResponse.jwtResponse.token,
-        username: apiResponse.userID.username,
-        name: apiResponse.userID.name,
-      };
-      appContext.setSession(tokenData);
-      toast("Login successful.");
-    } else {
-      toast("Invalid username or password.");
-    }
+  const onFinish = (values) => {
+    console.log(values);
+    // Code to link with login api
   };
 
   return (
@@ -44,6 +27,7 @@ const LoginForm = () => {
           size="large"
           name="username"
           placeholder="Username"
+          className="input-login"
         />
       </FormItem>
       <FormItem
@@ -61,6 +45,7 @@ const LoginForm = () => {
           name="password"
           type="password"
           placeholder="Password"
+          className="input-login"
         />
       </FormItem>
       <FormItem>
@@ -68,7 +53,8 @@ const LoginForm = () => {
           type="primary"
           htmlType="submit"
           size="large"
-          className="login-form-button bg-indigo-600"
+          className="login-form-button"
+          id="button-id"
         >
           Login
         </Button>

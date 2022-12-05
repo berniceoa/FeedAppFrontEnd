@@ -6,7 +6,7 @@ import dummyPost from "../../dummyPost.json";
 import LoadingIndicator from "../../components/loadingIndicator/LoadingIndicator";
 
 const MyFeeds = ({ currentUser }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getMyPosts();

@@ -4,11 +4,11 @@ import * as Yup from "yup";
 
 import { Formik, Form } from "formik";
 
-import LoadingIndicator from "../../components/loadingIndicator/LoadingIndicator";
+import LoadingIndicator from "../loadingIndicator/LoadingIndicator";
 import FormField from "../formField/FormField";
 
 const BasicProfile = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

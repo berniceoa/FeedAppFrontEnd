@@ -2,12 +2,13 @@
   max-width: 420px;
   margin: 0 auto;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 100px;
   padding: 50px 50px 0px 50px;
   border: 1px solid #e1e0e0;
   background-color: #fff;
   font-size: 32px;
   font-weight: 700;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .signup-link-container {
@@ -20,7 +21,8 @@
   padding: 20px;
   border: 1px solid #e1e0e0;
   background-color: #fff;
-  color: #999;
+  color: black;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .signup-link-container a {
@@ -29,18 +31,8 @@
   color: #003569;
 }
 
-.login-form-button {
-  width: 100%;
-}
-
-.ant-form-item-with-help {
-  margin-bottom: 10px;
-}
-
-.logo-container {
-  margin-bottom: 50px;
-}
-
-.login-container img {
-  width: 200px;
+#feed-login {
+  font-size: 30px;
+  /* font-style: italic; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
