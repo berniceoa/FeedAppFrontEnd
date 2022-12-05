@@ -17,7 +17,7 @@ const { Content } = Layout;
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   return (
     <>
