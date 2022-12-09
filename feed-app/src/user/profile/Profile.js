@@ -45,3 +45,4 @@ const Profile = ({ currentUser }) => {
 };
 
 export default Profile;
+
